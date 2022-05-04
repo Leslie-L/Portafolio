@@ -97,7 +97,7 @@ main h1{
     height: 35px;
     font-family: 'Space Mono', monospace;
 }
-.button-tip:hover{
+.button-tip2{
     background-color: var(--Strong-cyan);
     color: var(--Very-dark-cyan);
 }
