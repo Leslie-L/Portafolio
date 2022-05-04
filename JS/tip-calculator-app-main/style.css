@@ -163,6 +163,7 @@ main h1{
 }
 .left, .right{
     width: 50%;
+    padding: 10px;
 }
 .finalResult .global h3{
     color: var(--White);
@@ -181,6 +182,7 @@ main h1{
     font-family: 'Space Mono', monospace;
     color: var(--Very-dark-cyan);
     font-weight: 700;
+    font-size: 2rem;
     height: 35px;
     border: none;
     border-radius: 5px;
@@ -191,14 +193,22 @@ main h1{
         width: 800px;
       
     }
+    .selectTipGrid{
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
     
     .bill-and-Tips, .result{
         width: 50%;
     }
+
+    
     .bill-and-Tips{
         border-bottom-left-radius: 25px ;
         border-top-left-radius: 25px;
         border-top-right-radius: 0px;
+    }
+    .bill-and-Tips__tip input{
+        width: 95%;
     }
     .result{
         border-bottom-left-radius: 0px;
@@ -210,11 +220,14 @@ main h1{
         height: 100%;
     }
     .button-reset{
-        margin-top: 120px;
+        margin-top: 60px;
         height: 40px;
     }
     .finalResult .global p{
-        font-size: 2.4rem;
+        font-size: 3rem;
         
+    }
+    .nPeople  input{
+        width: 95%;
     }
 }
