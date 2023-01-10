@@ -5,11 +5,27 @@ const menuMobolAbierto = document.querySelector(".mobile-menu");
 const productDetalCart = document.querySelector(".navbar-shopping-cart");
 const productDetalCartAbierto = document.querySelector(".product-detail");
 const cardsContainer = document.querySelector('.cards-container');
+const modalDetailProduct = document.querySelector('.product-info-detail');
+
+/*Modal detalles del producto */
+const buttonCloseModal = document.querySelector('#closeModal');
+const imgModal =document.querySelector('#imgModal');
+const priceModal =document.querySelector('#priceModal');
+const titleModal = document.querySelector('#titleModal');
+const descriptionModal = document.querySelector('#descriptionModal');
+const buttonAddCart = document.querySelector('#buttonAddCart');
+
+
 
 menuDesplegable.addEventListener('click',showMenuDesplegable);
 menuMobil.addEventListener('click',showMenuMobil);
 productDetalCart.addEventListener('click',showCart);
+buttonCloseModal.addEventListener('click',closeModal);
 
+
+function closeModal() {
+    modalDetailProduct.classList.add('hide');
+}
 function showMenuDesplegable() {
     menuDesplegableAbierto.classList.toggle("hide");
     if(!productDetalCartAbierto.classList.contains("hide"))
@@ -26,6 +42,16 @@ function showCart() {
         menuMobolAbierto.classList.add("hide");
 }
 
+function showProd(event) {
+    const item=event.srcElement.info;
+    console.log(item);
+    modalDetailProduct.classList.remove('hide');
+    imgModal.src=item['image'];
+    priceModal.textContent = '$' + item['price'];
+    titleModal.textContent = item['title'];
+    descriptionModal.textContent = item['description'];
+    
+}
 async function datosProductos() {
     const response = await fetch('https://fakestoreapi.com/products');
     const data =  await  response.json();
@@ -35,6 +61,8 @@ async function datosProductos() {
 
         const imagen = document.createElement('img');
         imagen.src=item['image'];
+        imagen.addEventListener('click',showProd);
+        imagen.info=item;
 
         const divInfoProd = document.createElement('div');
         divInfoProd.classList.add('product-info');
@@ -50,6 +78,7 @@ async function datosProductos() {
         const figura = document.createElement('figure');
         const imgIcon = document.createElement('img');
         imgIcon.src="./icons/bt_add_to_cart.svg";
+        
         figura.appendChild(imgIcon);
 
         divInfoProd.appendChild(divAgrupador);
